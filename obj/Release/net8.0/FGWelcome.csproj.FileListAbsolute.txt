@@ -1,0 +1,17 @@
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\resources\gamedata\offsets.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\resources\gamedata\patches.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\resources\gamedata\signatures.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\resources\templates\template.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\resources\translations\en.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\FGWelcome.deps.json
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\FGWelcome.dll
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\net8.0\FGWelcome.pdb
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.csproj.AssemblyReference.cache
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.AssemblyInfoInputs.cache
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.AssemblyInfo.cs
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.csproj.CoreCompileInputs.cache
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.dll
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\refint\FGWelcome.dll
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\FGWelcome.pdb
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\obj\Release\net8.0\ref\FGWelcome.dll

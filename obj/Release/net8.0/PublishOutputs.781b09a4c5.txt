@@ -1,0 +1,8 @@
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\resources\gamedata\offsets.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\resources\gamedata\patches.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\resources\gamedata\signatures.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\resources\templates\template.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\resources\translations\en.jsonc
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\FGWelcome.dll
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\FGWelcome.pdb
+C:\Users\12484\Desktop\swiftlys2\FGWelcome\build\publish\FGWelcome\FGWelcome.deps.json
