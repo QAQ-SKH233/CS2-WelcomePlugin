@@ -17,9 +17,12 @@ public class GameEventService{
     private bool FirstJoin = true;
 
     private readonly IIpLocationService _ipLocationService;
+
+    private readonly ILogger<GameEventService> _logger;
     public GameEventService(ISwiftlyCore core, ILogger<GameEventService> logger, IIpLocationService ipLocationService){
         Core = core;
-        logger.LogInformation("GameEventService loaded ");
+        _logger = logger;
+        _logger.LogInformation("GameEventService loaded ");
 
         _ipLocationService = ipLocationService;
         core.Registrator.Register(this);
@@ -28,22 +31,9 @@ public class GameEventService{
 
     }
 
-    public void SendMessageToAll()
-    {
-        var players = Core.PlayerManager.GetAllPlayers();
-        Core.PlayerManager.SendMessage(MessageType.Chat, "Hello World");
-
-        foreach (var player in players)
-        {
-            player.SendMessage(MessageType.Chat, "Hello World");
-        }
-        
-    }
 
     [EventListener<EventDelegates.OnClientConnected>]
-    public void OnClientPutInServer(IOnClientConnectedEvent @event){
-        Console.WriteLine("HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO ");
-        Console.WriteLine(@event.PlayerId);
+    public void OnClientConnected(IOnClientConnectedEvent @event){
         var player = Core.PlayerManager.GetPlayer(@event.PlayerId);
 
         if (player != null)
@@ -58,18 +48,18 @@ public class GameEventService{
                     if (locationResult.Success)
                     {
                         _playerLocation[@event.PlayerId] = locationResult.Location!;
-                        Console.WriteLine($"Got location: {locationResult.Location}");
+                        _logger.LogInformation($"Got location: {locationResult.Location}");
                     }
                     else
                     {
                         // 处理错误情况
-                        Console.WriteLine($"Failed to get location: {locationResult.ErrorMessage}");
+                        _logger.LogError($"Failed to get location: {locationResult.ErrorMessage}");
                     }
                 }
                 catch (Exception ex)
                 {
                     // 异常处理
-                    Console.WriteLine($"Error getting location: {ex.Message}");
+                    _logger.LogError($"Error getting location: {ex.Message}");
                 }
             });
 
@@ -83,7 +73,7 @@ public class GameEventService{
         if(player == null || !player.IsValid || player.IsFakeClient) return HookResult.Continue;
         if (FirstJoin == true)
         {
-            Core.PlayerManager.SendMessage(MessageType.Chat, $"欢迎玩家 {player.Controller.PlayerName} 加入FG抢先体验服务器，TA来自 {_playerLocation[player.PlayerID]}");
+            Core.PlayerManager.SendMessage(MessageType.Chat, $"[green]欢迎玩家{player.Controller.PlayerName}加入FG抢先体验服务器[default]\nTA来自 [red]{_playerLocation[player.PlayerID]}");
 
             FirstJoin = false;
         }
