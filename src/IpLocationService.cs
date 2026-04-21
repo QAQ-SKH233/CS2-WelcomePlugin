@@ -142,7 +142,7 @@ public class IpLocationService : IIpLocationService, IDisposable
 
                 if (!string.IsNullOrWhiteSpace(location))
                 {
-                    _logger.LogInformation("成功查询到IP地址 {IpAddress} 的位置: {Location}", ipAddress, location);
+                    _logger.LogInformation("成功查询到IP地址 {IpAddress} 的位置: {Location} , 从API返回", ipAddress, location, jsonContent);
                     return IpLocationResult.CreateSuccess(ipAddress, location);
                 }
             }
