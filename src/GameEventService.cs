@@ -134,7 +134,7 @@ public class GameEventService{
                 location = "未知地区";
             }
 
-            Core.PlayerManager.SendMessage(MessageType.Chat, $"[green]欢迎玩家{player.Controller.PlayerName}加入FG抢先体验服务器[default]\nTA来自 [red]{location}");
+            Core.PlayerManager.SendMessage(MessageType.Chat, $"[yellow]>>  [green]{player.Controller.PlayerName} [default]加入FG社区 - Preview[default] 来自 [green]{location}");
 
             Task.Run(async () =>
             {
@@ -143,7 +143,7 @@ public class GameEventService{
                     var quote = await GetDailyQuoteAsync(default);
                     if (!string.IsNullOrWhiteSpace(quote))
                     {
-                        Core.PlayerManager.SendMessage(MessageType.Chat, $"[yellow]{quote}[default]");
+                        Core.PlayerManager.SendMessage(MessageType.Chat, $"[default]每日一言 - [olive]{quote}[default]");
                     }
                 }
                 catch (Exception ex)

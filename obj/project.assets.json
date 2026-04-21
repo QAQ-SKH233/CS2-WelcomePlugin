@@ -660,6 +660,22 @@
           }
         }
       },
+      "Semver/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.1"
+        },
+        "compile": {
+          "lib/net5.0/Semver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/_._": {
+            "related": ".xml"
+          }
+        }
+      },
       "Spectre.Console/0.51.1": {
         "type": "package",
         "compile": {
@@ -673,7 +689,38 @@
           }
         }
       },
-      "SwiftlyS2.CS2/1.0.3": {
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/_._": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "SwiftlyS2.CS2/1.2.3": {
         "type": "package",
         "dependencies": {
           "Dapper": "2.1.66",
@@ -689,8 +736,9 @@
           "Mono.Cecil": "0.11.6",
           "MySqlConnector": "2.4.0",
           "Npgsql": "9.0.3",
+          "Semver": "3.0.0",
           "Spectre.Console": "0.51.1",
-          "System.Data.SQLite": "2.0.2",
+          "System.Data.SQLite.Core": "1.0.119",
           "Tomlyn": "0.17.0",
           "Tomlyn.Extensions.Configuration": "1.0.6"
         },
@@ -705,13 +753,10 @@
           }
         }
       },
-      "System.Data.SQLite/2.0.2": {
+      "System.Data.SQLite.Core/1.0.119": {
         "type": "package",
-        "compile": {
-          "lib/netstandard2.1/System.Data.SQLite.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/_._": {}
+        "dependencies": {
+          "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.119]"
         }
       },
       "System.Diagnostics.EventLog/10.0.0": {
@@ -1736,6 +1781,24 @@
         "postgresql.png"
       ]
     },
+    "Semver/3.0.0": {
+      "sha512": "9jZCicsVgTebqkAujRWtC9J1A5EQVlu0TVKHcgoCuv345ve5DYf4D1MjhKEnQjdRZo6x/vdv6QQrYFs7ilGzLA==",
+      "type": "package",
+      "path": "semver/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Semver.dll",
+        "lib/net5.0/Semver.xml",
+        "lib/netstandard2.0/Semver.dll",
+        "lib/netstandard2.0/Semver.xml",
+        "lib/netstandard2.1/Semver.dll",
+        "lib/netstandard2.1/Semver.xml",
+        "semver.3.0.0.nupkg.sha512",
+        "semver.nuspec"
+      ]
+    },
     "Spectre.Console/0.51.1": {
       "sha512": "84xNywgnaG8XgOypnZAL+EZUbhCGE0umj7fuMrSI6esdE74HYHRoeBioeMUJXPiCt7iBDKHLwiBcg0IliYIIxA==",
       "type": "package",
@@ -1755,10 +1818,31 @@
         "spectre.console.nuspec"
       ]
     },
-    "SwiftlyS2.CS2/1.0.3": {
-      "sha512": "5Px9ulyAzyU1LQAAKtD9c0YFIx6iwtQ6vJJ16efmeXUwlSd0Wpdvy+SPk+oeSEbgb/wFw7UUrCVXD6dMYS9O6A==",
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+      "sha512": "dI7ngiCNgdm+n00nQvFTa+LbHvE9MIQXwMSLRzJI/KAJ7G1WmCachsvfE1CD6xvb3OXJvYYEfv3+S/LHyhN0Rg==",
       "type": "package",
-      "path": "swiftlys2.cs2/1.0.3",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.119",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/System.Data.SQLite.dll",
+        "lib/netstandard2.0/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.0/System.Data.SQLite.xml",
+        "lib/netstandard2.1/System.Data.SQLite.dll",
+        "lib/netstandard2.1/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.1/System.Data.SQLite.xml",
+        "runtimes/linux-x64/native/SQLite.Interop.dll",
+        "runtimes/osx-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x86/native/SQLite.Interop.dll",
+        "stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+        "stub.system.data.sqlite.core.netstandard.nuspec"
+      ]
+    },
+    "SwiftlyS2.CS2/1.2.3": {
+      "sha512": "P6j3E1mme3pS1/XK+ZHwb7p1M++8CEntOldwatyi1QcLU/siWo5a3Hsp/bjyv/nbWKfKzoYEWsR1vu84MKWvzw==",
+      "type": "package",
+      "path": "swiftlys2.cs2/1.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1766,22 +1850,19 @@
         "lib/net10.0/SwiftlyS2.CS2.dll",
         "lib/net10.0/SwiftlyS2.CS2.runtimeconfig.json",
         "lib/net10.0/SwiftlyS2.CS2.xml",
-        "swiftlys2.cs2.1.0.3.nupkg.sha512",
+        "swiftlys2.cs2.1.2.3.nupkg.sha512",
         "swiftlys2.cs2.nuspec"
       ]
     },
-    "System.Data.SQLite/2.0.2": {
-      "sha512": "yAwxkraZf1PazyLg1sqMAlh4KEtaa2L8zieLicd9oWBybrb3SoPph+WVIyUTFWwtTVhNX/jNsDew6tbB8bw2xQ==",
+    "System.Data.SQLite.Core/1.0.119": {
+      "sha512": "bhQB8HVtRA+OOYw8UTD1F1kU+nGJ0/OZvH1JmlVUI4bGvgVEWeX1NcHjA765NvUoRVuCPlt8PrEpZ1thSsk1jg==",
       "type": "package",
-      "path": "system.data.sqlite/2.0.2",
+      "path": "system.data.sqlite.core/1.0.119",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net471/System.Data.SQLite.dll",
-        "lib/netstandard2.0/System.Data.SQLite.dll",
-        "lib/netstandard2.1/System.Data.SQLite.dll",
-        "system.data.sqlite.2.0.2.nupkg.sha512",
-        "system.data.sqlite.nuspec"
+        "system.data.sqlite.core.1.0.119.nupkg.sha512",
+        "system.data.sqlite.core.nuspec"
       ]
     },
     "System.Diagnostics.EventLog/10.0.0": {
@@ -1864,31 +1945,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\12484\\.nuget\\packages\\": {},
-    "D:\\sdk\\NuGetPackages": {}
+    "C:\\Users\\guduy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\12484\\Desktop\\swiftlys2\\FGWelcome\\FGWelcome.csproj",
+      "projectUniqueName": "D:\\sw2_plugins\\CS2-WelcomePlugin\\FGWelcome.csproj",
       "projectName": "FGWelcome",
-      "projectPath": "C:\\Users\\12484\\Desktop\\swiftlys2\\FGWelcome\\FGWelcome.csproj",
-      "packagesPath": "C:\\Users\\12484\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\12484\\Desktop\\swiftlys2\\FGWelcome\\obj\\",
+      "projectPath": "D:\\sw2_plugins\\CS2-WelcomePlugin\\FGWelcome.csproj",
+      "packagesPath": "C:\\Users\\guduy\\.nuget\\packages\\",
+      "outputPath": "D:\\sw2_plugins\\CS2-WelcomePlugin\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\sdk\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\12484\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\guduy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1966,7 +2040,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.106/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
