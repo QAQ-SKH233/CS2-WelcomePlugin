@@ -134,7 +134,7 @@ public class GameEventService{
                 location = "未知地区";
             }
 
-            Core.PlayerManager.SendMessage(MessageType.Chat, $"[yellow]>>  [green]{player.Controller.PlayerName} [default]加入FG社区 - Preview[default] 来自 [green]{location}");
+            Core.PlayerManager.SendMessage(MessageType.Chat, $" >>  [green]{player.Controller.PlayerName} [default]加入FG社区 - Preview[default] 来自 [green]{location}");
 
             Task.Run(async () =>
             {
