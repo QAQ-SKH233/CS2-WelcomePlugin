@@ -159,7 +159,7 @@ public class GameEventService
 
         @event.DontBroadcast = true;
 
-        if (FirstJoin.ContainsKey(player.PlayerID)) return HookResult.Handled;
+        if (FirstJoin.ContainsKey(player.PlayerID)) return HookResult.Continue;
 
         if (!_playerLocation.TryGetValue(player.PlayerID, out var location))
         {
@@ -170,7 +170,7 @@ public class GameEventService
 
         FirstJoin[player.PlayerID] = false;
 
-        return HookResult.Handled;
+        return HookResult.Continue;
     }
 
 
