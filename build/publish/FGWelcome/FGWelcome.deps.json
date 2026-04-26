@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v10.0": {
       "FGWelcome/1.0.0": {
         "dependencies": {
-          "SwiftlyS2.CS2": "1.2.3"
+          "SwiftlyS2.CS2": "1.3.2"
         },
         "runtime": {
           "FGWelcome.dll": {}
@@ -38,7 +38,7 @@
           }
         }
       },
-      "SwiftlyS2.CS2/1.2.3": {
+      "SwiftlyS2.CS2/1.3.2": {
         "dependencies": {
           "System.Data.SQLite.Core": "1.0.119"
         }
@@ -63,12 +63,12 @@
       "path": "stub.system.data.sqlite.core.netstandard/1.0.119",
       "hashPath": "stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512"
     },
-    "SwiftlyS2.CS2/1.2.3": {
+    "SwiftlyS2.CS2/1.3.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-P6j3E1mme3pS1/XK+ZHwb7p1M++8CEntOldwatyi1QcLU/siWo5a3Hsp/bjyv/nbWKfKzoYEWsR1vu84MKWvzw==",
-      "path": "swiftlys2.cs2/1.2.3",
-      "hashPath": "swiftlys2.cs2.1.2.3.nupkg.sha512"
+      "sha512": "sha512-pvKUlw3Ai/9XCK5q3KE0eGVRTAua1nHZZg33TTqggjygq+NLW3iNvoM78eu8mdsAZtgShJsrm20RZy3+o3Mu+g==",
+      "path": "swiftlys2.cs2/1.3.2",
+      "hashPath": "swiftlys2.cs2.1.3.2.nupkg.sha512"
     },
     "System.Data.SQLite.Core/1.0.119": {
       "type": "package",

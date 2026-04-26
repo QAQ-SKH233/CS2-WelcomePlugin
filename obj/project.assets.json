@@ -720,7 +720,7 @@
           }
         }
       },
-      "SwiftlyS2.CS2/1.2.3": {
+      "SwiftlyS2.CS2/1.3.2": {
         "type": "package",
         "dependencies": {
           "Dapper": "2.1.66",
@@ -1839,10 +1839,10 @@
         "stub.system.data.sqlite.core.netstandard.nuspec"
       ]
     },
-    "SwiftlyS2.CS2/1.2.3": {
-      "sha512": "P6j3E1mme3pS1/XK+ZHwb7p1M++8CEntOldwatyi1QcLU/siWo5a3Hsp/bjyv/nbWKfKzoYEWsR1vu84MKWvzw==",
+    "SwiftlyS2.CS2/1.3.2": {
+      "sha512": "pvKUlw3Ai/9XCK5q3KE0eGVRTAua1nHZZg33TTqggjygq+NLW3iNvoM78eu8mdsAZtgShJsrm20RZy3+o3Mu+g==",
       "type": "package",
-      "path": "swiftlys2.cs2/1.2.3",
+      "path": "swiftlys2.cs2/1.3.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1850,7 +1850,7 @@
         "lib/net10.0/SwiftlyS2.CS2.dll",
         "lib/net10.0/SwiftlyS2.CS2.runtimeconfig.json",
         "lib/net10.0/SwiftlyS2.CS2.xml",
-        "swiftlys2.cs2.1.2.3.nupkg.sha512",
+        "swiftlys2.cs2.1.3.2.nupkg.sha512",
         "swiftlys2.cs2.nuspec"
       ]
     },
@@ -2040,7 +2040,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.106/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.107/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

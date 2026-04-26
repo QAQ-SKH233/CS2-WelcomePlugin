@@ -1,5 +1,3 @@
-using System.Reflection;
-using System.Net.Http;
 using System.Text.Json;
 using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
@@ -8,15 +6,16 @@ using SwiftlyS2.Shared.Events;
 using SwiftlyS2.Shared.GameEventDefinitions;
 using SwiftlyS2.Shared.Misc;
 using SwiftlyS2.Shared.Players;
-using SwiftlyS2.Shared.ProtobufDefinitions;
 
+namespace FGWelcome;
 
-public class GameEventService{
+public class GameEventService
+{
 
     private ISwiftlyCore Core { get; set; }
     private readonly ConcurrentDictionary<int, string> _playerLocation = new();
 
-    private ConcurrentDictionary<IPlayer, bool> FirstJoin = new();
+    private ConcurrentDictionary<int, bool> FirstJoin = new();
 
     private readonly IIpLocationService _ipLocationService;
 
@@ -30,6 +29,11 @@ public class GameEventService{
 
     private const string DailyQuoteApiUrl = "http://api.kekc.cn/api/wawr?encode=json";
 
+    private readonly Random _random = new();
+    private DateTime _nextQuoteTime;
+    private readonly int _minQuoteInterval = 120;
+    private readonly int _maxQuoteInterval = 600;
+
     public GameEventService(ISwiftlyCore core, ILogger<GameEventService> logger, IIpLocationService ipLocationService){
         Core = core;
         _logger = logger;
@@ -38,9 +42,10 @@ public class GameEventService{
         _ipLocationService = ipLocationService;
         core.Registrator.Register(this);
 
-        Core.GameEvent.HookPre<EventPlayerSpawn>(OnPlayerSpawned);
+        Core.GameEvent.HookPre<EventPlayerTeam>(OnPlayerTeam);
         Core.Event.OnTick += OnTick;
 
+        _nextQuoteTime = DateTime.UtcNow.AddSeconds(_random.Next(_minQuoteInterval, _maxQuoteInterval));
     }
 
     private void OnTick()
@@ -48,6 +53,27 @@ public class GameEventService{
         while (_pendingMessages.TryDequeue(out var item))
         {
             Core.PlayerManager.SendMessage(item.Kind, item.Message);
+        }
+
+        if (DateTime.UtcNow >= _nextQuoteTime)
+        {
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    var quote = await GetDailyQuoteAsync(default);
+                    if (!string.IsNullOrWhiteSpace(quote))
+                    {
+                        _pendingMessages.Enqueue((MessageType.Chat, $"[default]每日一言 - [olive]{quote}[default]"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "获取每日一言时发生异常");
+                }
+            });
+
+            _nextQuoteTime = DateTime.UtcNow.AddSeconds(_random.Next(_minQuoteInterval, _maxQuoteInterval));
         }
     }
 
@@ -115,7 +141,7 @@ public class GameEventService{
                 catch (Exception ex)
                 {
                     // 异常处理
-                    _logger.LogError($"Error getting location: {ex.Message}");
+                    _logger.LogError(ex, "获取玩家位置时发生异常");
                 }
             });
 
@@ -123,46 +149,39 @@ public class GameEventService{
 
     }
 
-    public HookResult OnPlayerSpawned(EventPlayerSpawn @event){
-        
-        var player = Core.PlayerManager.GetPlayer(@event.UserId);
-        if(player == null || !player.IsValid || player.IsFakeClient) return HookResult.Continue;
-        if (!FirstJoin.TryGetValue(player, out var isFirstJoin) || isFirstJoin)
+    public HookResult OnPlayerTeam(EventPlayerTeam @event){
+        if (@event.Disconnect || @event.IsBot || @event.Silent) return HookResult.Continue;
+
+        var player = @event.UserIdPlayer;
+        if (player == null || !player.IsValid || player.IsFakeClient) return HookResult.Continue;
+
+        if (@event.Team == 0 || @event.Team == 1) return HookResult.Continue;
+
+        @event.DontBroadcast = true;
+
+        if (FirstJoin.ContainsKey(player.PlayerID)) return HookResult.Handled;
+
+        if (!_playerLocation.TryGetValue(player.PlayerID, out var location))
         {
-            if (!_playerLocation.TryGetValue(player.PlayerID, out var location))
-            {
-                location = "未知地区";
-            }
-
-            Core.PlayerManager.SendMessage(MessageType.Chat, $" >>  [green]{player.Controller.PlayerName} [default]加入FG社区 - Preview[default] 来自 [green]{location}");
-
-            Task.Run(async () =>
-            {
-                try
-                {
-                    var quote = await GetDailyQuoteAsync(default);
-                    if (!string.IsNullOrWhiteSpace(quote))
-                    {
-                        Core.PlayerManager.SendMessage(MessageType.Chat, $"[default]每日一言 - [olive]{quote}[default]");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "获取每日一言时发生异常");
-                }
-            });
-
-            FirstJoin[player] = false;
+            location = "未知地区";
         }
 
-        return HookResult.Continue;
+        _pendingMessages.Enqueue((MessageType.Chat, $"[[olive]FG社区] [green]{player.Controller.PlayerName} [default]加入房间[default] - 来自 [olive]{location}"));
 
+        FirstJoin[player.PlayerID] = false;
+
+        return HookResult.Handled;
     }
 
 
     [EventListener<EventDelegates.OnClientDisconnected>]
     public void OnClientDisconnected(IOnClientDisconnectedEvent @event){
-        FirstJoin.Remove(Core.PlayerManager.GetPlayer(@event.PlayerId), out _);
+        var player = Core.PlayerManager.GetPlayer(@event.PlayerId);
+        if (player != null)
+        {
+            FirstJoin.Remove(player.PlayerID, out _);
+            _playerLocation.Remove(player.PlayerID, out _);
+        }
     }
 
 }
